@@ -27,6 +27,13 @@ public class BeerController implements BeerControllerDocs{
         return beerService.createBeer(beerDTO);
     }
 
+    @PutMapping
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public BeerDTO replace(@RequestBody @Valid BeerDTO beerDTO) throws BeerNotFoundException {
+      return  beerService.replace(beerDTO);
+
+    }
+
     @GetMapping("/{name}")
     public BeerDTO findByName(@PathVariable  String name) throws BeerNotFoundException {
         return beerService.findByName(name);
